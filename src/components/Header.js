@@ -1,35 +1,96 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from 'react-router-dom';
 
-function Header() {
-    return (
-        <header>
-            <div className="container flex">
-                <NavLink className="logo" to="/">
-                    CONDUIT
-                </NavLink>
-                <nav>
-                    <ul className="flex nav">
-                        <li>
-                            <NavLink className="navlink" to="/" exact>
-                                Home
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className="navlink" to="/signup">
-                                Signup
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className="navlink" to="/login">
-                                Login
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    )
+function Header(props) {
+  return (
+    <>
+      <header className="header">
+        <div className="container">
+          <nav className="flex-sb">
+            <Link style={{ textDecoration: 'none' }} to="/">
+              <h1>CONDUIT</h1>
+            </Link>
+
+            {props.isLoggedIn ? (
+              <AuthHeader user={props.user} />
+            ) : (
+              <NonAuthHeader />
+            )}
+          </nav>
+        </div>
+        
+      </header>
+    </>
+  );
+}
+
+function NonAuthHeader() {
+  return (
+    <ul className="flex">
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to="/"
+        exact
+      >
+        <li>Home</li>
+      </NavLink>
+
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to="/signup"
+      >
+        <li>Signup</li>
+      </NavLink>
+      
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to="/login"
+      >
+        <li>Login</li>
+      </NavLink>
+    </ul>
+  );
+}
+function AuthHeader(props) {
+  let { username } = props.user;
+  return (
+    <ul className="flex">
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to="/"
+        exact
+      >
+        <li>Home</li>
+      </NavLink>
+
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to="/new-post"
+      >
+        <li>NewArticle</li>
+      </NavLink>
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to="/setting"
+      >
+        <li>
+          <i className="fa-solid fa-gear"></i>Settings
+        </li>
+      </NavLink>
+      <NavLink
+        style={{ textDecoration: 'none' }}
+        activeclassname="active"
+        to={`/profile/${username}`}
+      >
+        <li>Profile</li>
+      </NavLink>
+    </ul>
+  );
 }
 
 export default Header;
