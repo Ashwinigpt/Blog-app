@@ -81,7 +81,7 @@ class Home extends React.Component {
     } = this.state;
     console.log(articleCount);
     return (
-      
+
       <>
         <div className="hero">
             <h2 className='conduit'>CONDUIT</h2>
@@ -105,5 +105,7 @@ class Home extends React.Component {
       </>
     );
   }
+
+  
 }
 export default Home;
