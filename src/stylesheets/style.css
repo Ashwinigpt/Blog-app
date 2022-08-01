@@ -200,7 +200,7 @@ body {
 }
 
 .header {
-  padding: 1.8rem 0;
+  padding: 1.5rem 0;
   background-color: white;
 }
 
@@ -224,7 +224,7 @@ body {
 .hero {
   background-color: #55ca55;
   padding: 4rem;
-  margin: 2rem;
+  margin-bottom: 2rem;
   max-width: 1300px;
 }
 
